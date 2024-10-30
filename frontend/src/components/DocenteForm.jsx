@@ -165,6 +165,20 @@ const DocenteForm = ({talleres}) => {
             <ArrowBackIosIcon />
           </IconButton>
         )}
+
+      <Button variant="contained" style={{backgroundColor: '#E7214E'}} onClick={()=>{
+      setFormData({
+      nombreApellido: '',
+      escuela: '',
+      dni: '',
+      email: '',
+      telefono: '',
+      estado: 'ACTIVADO',
+      });
+      }}
+       >
+        Cancelar
+        </Button>
         
         <Button 
           variant="contained" 

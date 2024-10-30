@@ -3,7 +3,6 @@ import { TextField, Button, Box, FormControl, InputLabel, Select, MenuItem, Chec
 import DownloadIcon from '@mui/icons-material/Download';
 import Calendario from './Calendario';
 import Horario from './Horario';
-import PdfDownloadComponent from './Pdf';
 import axios from 'axios';
 
 const EducacionForm = () => {
@@ -56,10 +55,10 @@ const EducacionForm = () => {
     const normalizeString = (str) => {
         console.log('Input to normalizeString:', str, typeof str);
         return str
-            .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove accents
-            .replace(/[^a-z0-9\s]/g, '') // Remove special characters
-            .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
-            .trim(); // Remove leading and trailing spaces
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // quita acentos.
+            .replace(/[^a-z0-9\s]/g, '') // quita caracteres especiales.
+            .replace(/\s+/g, ' ') // reemplaza multiples espacios con solo un espacio.
+            .trim(); // quita espacios al principio y al final.
     };
 
     const handleCueInputChange = (event, value) => {
@@ -119,11 +118,6 @@ const EducacionForm = () => {
     };
 
     const handleDateChange = async (date) => {
-        //const formattedDate = new Intl.DateTimeFormat('es-ES', {
-            //day: '2-digit',
-            //month: '2-digit',
-            //year: 'numeric'
-        //}).format(date);
         const formattedDate = date.toISOString().split('T')[0];
         setFormData(prev => ({ ...prev, fechaVisita: formattedDate }));
         try {
@@ -365,10 +359,10 @@ const EducacionForm = () => {
                 window.open('/public/PAUTAS GENERALES para USO de INSTALACIONES Y RECURSOS ConectarLAB Chaco (MODIF.).docx.pdf', '_blank');
               }}
               >
-              Ver Pdf
+              Ver Condiciones 
               </Button>
             </Grid>
-            <Grid container alignItems="center">
+            <Grid container alignItems="center" sx={{mt:1}}>
             <Typography style={{marginLeft:25}}>
             Formulario de autorización de Imagen
             </Typography>
@@ -383,7 +377,7 @@ const EducacionForm = () => {
 
             <Grid item xs={12}>
               <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <Button variant="contained" style={{backgroundColor: '#8D5CF6'}} onClick={()=>{
+                <Button variant="contained" style={{backgroundColor: '#E7214E'}} onClick={()=>{
                   setFormData({
                     cue: '',
                     nombreEscuela: '',
@@ -404,7 +398,7 @@ const EducacionForm = () => {
                 }}>
                   Cancelar
                 </Button>
-                <Button variant="contained" type="submit" style={{backgroundColor: '#8D5CF6', marginLeft:'5px'}}>
+                <Button variant="contained" type="submit" style={{backgroundColor: '#7038C3', marginLeft:'5px'}}>
                   Enviar
                 </Button>
               </Box>
@@ -425,9 +419,6 @@ const EducacionForm = () => {
             horariosOcupados={horariosOcupados}
           />
         </Box>
-        //<a href="public/AUTORIZACION DE USO Y CESIÓN DE IMAGEN Y VOZ DE MENORES- ConectarLAB Chaco.docx" download>
-        //<button>Descargar Formulario</button>
-        //</a>
       );
       
     };
