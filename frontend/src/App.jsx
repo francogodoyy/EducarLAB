@@ -12,7 +12,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '/public/estilo.css'
 import './App.css'
-import '/public/estilo.css'; 
 import axios from 'axios';
 
 
@@ -82,7 +81,7 @@ function App() {
         variant="contained"
         color="secondary"
         onClick={handleReturnHome}
-        sx={{ minWidth: 'unset', width: '100px', height: '50px', p: 0, fontWeight:'1000', backgroundColor:'#8D5CF6', color:'white'}}
+        sx={{ minWidth: 'unset', width: '100px', height: '50px', p: 0, fontWeight:'1000', backgroundColor:'#E7214E', color:'white'}}
       >
         <HomeIcon style={{padding:'0px 0px 6px 0px'}}/>
         Inicio

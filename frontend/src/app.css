@@ -11,7 +11,7 @@ a:hover{
 }
 
 body {
-  background-image: url("fondo.jpg");
+  background-image: url("/fondo.jpg");
   background-size: cover;
   background-attachment: fixed;
   font-family: 'Rubik', sans-serif;

@@ -1,34 +1,42 @@
+/*
 .section{
     padding: 20px 10px;
     margin: 20px 0;
 }
-
+*/
 /*Barra de Navegacion*/
 /*BARRA DE NAVEGACION*/
 #barradenavegacion {
-    background-color: #082140;
+    background-color: #252D4F;
     top: 0;
     width: 100%;
     position: fixed; 
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+
 }
+
 
 .navbar-brand {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 0.2%;
 }
 
 .navbar-brand img {
     margin-right: 0.5rem;
-    height: 45px;
-    width: auto;
+    height: 40px;
+    width: 100%;
     transition: all 0.3s;
+    opacity: 1;
 }
 
 .navbar-nav .nav-link {
     font-family: 'Kubic', sans-serif;
+}
+
+.navbar-nav .nav-link:not(.btn-outline-secondary) {
+    color: white;
 }
 
 .btn-light {
@@ -40,6 +48,20 @@
     border-color: #C7A1EB;
     margin-left: 8px;
     align-items: center;
+}
+
+.nav-link-button {
+    width: 100%;
+    height: 35px;
+    padding: var(--SpacingSizeSize-2) var(--SpacingSizeSize-4) var(--SpacingSizeSize-2) var(--SpacingSizeSize-4);
+    gap: var(--SpacingSizeSize-2);
+    border-radius: var(--SpacingSizeSize-1);
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+}
+
+.nav-link-button img {
+    opacity: 1;
 }
 
 img, svg {
@@ -65,13 +87,15 @@ img, svg {
         flex-direction: column;
         align-items: center;
         width: 100%;
+        color: #fffefe;
     }
 
-    .navbar-nav .nav-link {
-        padding: 10px; /* Añade espacio alrededor de los elementos del menú */
-        width: 100%; /* Asegúrate de que los elementos del menú ocupen todo el ancho */
-        text-align: center; /* Centra el texto del menú */
-    }
+.navbar-nav .nav-link {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+}
 }
 
 
@@ -88,7 +112,10 @@ img, svg {
     overflow: hidden;
     position: relative;
     background: url('../src/assets/img/Hero_Section_1.png') no-repeat center center/cover;
-    background-attachment: fixed; 
+    background-attachment: absolute;
+    background-size: 100% 90%;
+    background-position: center;
+    
     margin: 0 0 5px;
 }
 
@@ -132,6 +159,7 @@ img, svg {
     font-size: 16px;
     font-weight: normal;
     margin-bottom: 10px;
+    color: #C7A1EB;
 }
 
 .text-section h4 {
@@ -145,7 +173,7 @@ img, svg {
 }
 
 .text-section button {
-    background-color: #7c4dff;
+    background-color: #E7214E;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -155,13 +183,14 @@ img, svg {
 }
 
 .text-section button:hover {
-    background-color: #5e35b1;
+    background-color: #C7A1EB;
 }
 
 .image-section{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 2%;
     width: 50%;
 }
 
@@ -248,15 +277,17 @@ img, svg {
 
 .process-section{
     font-family: 'Kubic', sans-serif;
-    background-color: #f8f9fa;
+    background-color: #FFFF;
     display: flex;
     justify-content: center;
 }
 
 .containerpasos{
-    max-width: 1200px;
+    max-width: 100%;
     margin: 10px;
     padding: 8px 0 0;
+    justify-content: center;
+    align-content: center;
 }
 
 .filapasos{
@@ -277,7 +308,6 @@ img, svg {
     padding: 20px;
     text-align: center;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     position: relative;
     margin-bottom: 20px;
     min-width: 200px;
@@ -310,12 +340,26 @@ img, svg {
     color: #666;
 }
 
+.solicitud-turno {
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: auto;
+}
+
+.solicitud-turno:hover {
+    background-color: #C7A1EB;
+}
+
 
 /*SECCION RECORRIDO VIRTUAL*/
 #virtual{
     padding: 10px 10px;
-    margin: 30px 10px;
-    background-color: #06213E;
+    background-color: #252D4F;
     font-family: 'Kubic', sans-serif;
 }
 
@@ -325,13 +369,13 @@ img, svg {
 }
 
 .virtual-content h2{
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
-    color: #fff;
+    color: #B1B1FD;
 }
 
 .virtual-content h3{
-    font-size: 24px;
+    font-size: 36px;
     color: #fff;
 }
 
@@ -351,7 +395,7 @@ img, svg {
 
 /*Iconos de la lista*/
 .feature-list li i{
-    color:#379785;
+    color:#9B51E0;
     margin-right: 20px;
     font-size: 20px;
 }
@@ -378,7 +422,7 @@ img, svg {
     top:75%;
     left:25%;
     transform: translate(-50%, -50%);
-    background-color: #9B51E0;
+    background-color: #E7214E;
     padding: 15px;
     text-align: center;
     border-radius: 10px;
@@ -405,11 +449,11 @@ img, svg {
     position: relative;
 }
 
-.carousel-lab .card {
-    border-radius: 10px;
-    border: 1px solid #E1E9F8;
+.carousel-lab .card-img-top {
+    border-radius: 15px;
+    /*border: 1px solid #E1E9F8;*/
     transition: transform 0.3s;
-    background-color: #F9FAFC;
+    /*background-color: #F9FAFC;*/
     padding: 10px; 
     margin: 20px; 
     display: flex;
@@ -420,7 +464,7 @@ img, svg {
     width: 90%;
 }
 
-.carousel-lab .card-body {
+.carousel-lab .card-img-top {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -428,6 +472,7 @@ img, svg {
     height: 80%;
 }
 
+/*
 .additional-info {
     background-color: #f1f1f1;
     padding: 10px;
@@ -440,14 +485,14 @@ img, svg {
     display: block;
     bottom: 0;
 }
-
+*/
 .carousel-lab .card:hover {
     transform: translateY(-5px);
 }
 
 .carousel-lab .card-img-top {
-    width: 80%; 
-    height: 100%; 
+    width: 90%; 
+    height: 95%; 
     object-fit: cover;
     justify-content: center;
 }
@@ -572,7 +617,6 @@ color: #38393E ;
 /*ESTILOS DE COMENTARIOS*/
 #comentarios{
     padding: 20px 10px;
-    margin: 10px;
 }
 
 .comentario-mariano {
@@ -585,7 +629,7 @@ color: #38393E ;
 }
 
 .comentario-mariano .slide-container{
-    max-width: 1000px;
+    max-width: 100%;
     width: 100%;
     padding: 20px 0;
 }
@@ -597,11 +641,11 @@ color: #38393E ;
 .comentario-mariano .slide-content{
     margin: 0 40px;
     overflow: hidden;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 .comentario-mariano .card{
-    border-radius: 25px;
+    border-radius: 10px;
     background-color: #fff;
     min-height: 150px; /* Establece una altura mínima para todas las tarjetas */
     height:auto; /* Las tarjetas crecerán según el contenido */
@@ -675,7 +719,7 @@ width: 40px;
 }
 
 .comentario-mariano .swiper-navBtn:hover{
-    color: #EE3D8F;
+    color: #E7214E;
 }
 
 .comentario-mariano .swiper-button-next{
@@ -710,7 +754,7 @@ width: 40px;
 
 /*Etiquetas h5 del footer*/
 .footer h5{ 
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 20px;
     font-weight: bold;
 }
@@ -731,10 +775,11 @@ width: 40px;
 /*Iconos de redes sociales*/
 .social-icons a{
     display: inline-block;
-    color: #EE3D8F;
+    color: #E7214E;
     font-size: 20px;
     margin-right: 10px;
 }
+
 
 .footer ul{
     padding: 0;
@@ -759,6 +804,25 @@ width: 40px;
     color: #fff;
 }
 
+.newsletter form {
+    display: flex;
+}
+
+.newsletter input {
+    padding: 20px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.newsletter btn-primary {
+    padding: 10px 20px;
+    border: none;
+    background-color: #E7214E;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
 /*Parte inferior del footer*/
 .footer-bottom{
     background-color: #06213E;
@@ -771,6 +835,11 @@ width: 40px;
     display:flex;
     align-items: center;
     justify-content: center;
+    padding-left: 40px;
+    padding-right: 40px;    
+    padding-top: 30px;
+    padding-bottom: 30px;
+
 }
 
 .logo_container img{
@@ -791,10 +860,15 @@ width: 40px;
 
 .izquierda{
     left: 0;
+    margin-left: 30px;
+            margin-top: 20px;
 }
 
 .derecha{
     right: 0;
+    margin-right: 30px;
+        margin-top: 20px;
+           
 }
 
 

@@ -183,7 +183,22 @@ const ComunidadForm = ({talleres}) => {
             <ArrowBackIosIcon />
           </IconButton>
         )}
-        
+
+      <Button variant="contained" style={{backgroundColor: '#E7214E'}} onClick={()=>{
+        setFormData({
+        nombreApellido: '',
+        edad: '',
+        fechaNacimiento: '',
+        nombreApellidoTutor: '',
+        telefono: '',
+        email: '',
+        estado: 'ACTIVADO',
+        });
+        }}
+       >
+        Cancelar
+        </Button>
+
         <Button 
           variant="contained" 
           color="primary" 
