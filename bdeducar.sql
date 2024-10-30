@@ -3106,9 +3106,21 @@ CREATE TABLE IF NOT EXISTS `escuelas` (
   `cue` int(15) NOT NULL,
   `estado` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla conectarlab.escuelas: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conectarlab.escuelas: ~10 rows (aproximadamente)
+INSERT INTO `escuelas` (`id`, `nombre_escuela`, `localidad_escuela`, `nombre_director`, `grado_escuela`, `turno`, `cantidad_alumnos`, `telefono`, `email`, `fecha`, `horario`, `cue`, `estado`) VALUES
+	(33, 'E.E.P. Nº 50 - MARCIANO LUIS OJEDA', 'RESISTENCIA', 'awefawef', 'awefawefawef', 'Mañana', 22, '3243242342', 'waefawefaw@gmail.com', '2024-10-18', 'Mañana 1', 220000200, 'ACTIVADO'),
+	(34, 'E.P.A Nº 14 - RAMON DE LAS MERCEDES TISSERA', 'RESISTENCIA', 'waefwaef', 'waefawef', 'Tarde', 24, '2342342342', 'wadawdwad@gmail.com', '2024-10-18', 'Mañana 2', 220000501, 'ACTIVADO'),
+	(35, 'U.E.G.P. Nº 1 (UEP 1) INSTITUTO EDUCATIVO PRIVADO', 'RESISTENCIA', 'waefwaefwaef', 'waefwaefwaef', 'Mañana', 24, '3242342424', 'awefawefwaef@gmail.com', '2024-10-18', 'Tarde 1', 220000400, 'ACTIVADO'),
+	(36, 'E.P.A Nº 2', 'BARRANQUERAS', 'waefwaefwaef', 'awefwaef', 'Mañana', 24, '3242423424', 'waefwaefwaef@gmail.com', '2024-10-18', 'Tarde 2', 220001000, 'ACTIVADO'),
+	(37, 'JARDIN DE INFANTES Nº 45 - MAESTRA SARA MARINO', 'RESISTENCIA', 'awdawdawd', 'wadawdawd', 'Mañana', 24, '342432424', 'awefawef@gmail.com', '2024-10-30', 'Mañana 1', 220000300, 'ACTIVADO'),
+	(38, 'E.P.A Nº 14 - RAMON DE LAS MERCEDES TISSERA', 'RESISTENCIA', 'wafeawef', 'awef', 'Mañana', 23, '324234242', 'waefawef@gmail.com', '2024-10-23', 'Mañana 1', 220000501, 'ACTIVADO'),
+	(39, 'E.P.A Nº 14 - RAMON DE LAS MERCEDES TISSERA', 'RESISTENCIA', 'awefwaef', 'awefwaef', 'Mañana', 22, '23423423', 'asdaojdio@gmail.com', '2024-10-24', 'Mañana 2', 220000501, 'ACTIVADO'),
+	(40, 'E.P.A Nº 14 - RAMON DE LAS MERCEDES TISSERA', 'RESISTENCIA', 'awefwaefawef', 'awefawefwa', 'Tarde', 23, '234234234', 'awfwagagw@gmail.com', '2024-10-24', 'Mañana 1', 220000500, 'ACTIVADO'),
+	(41, 'E.E.P. Nº 50 - MARCIANO LUIS OJEDA', 'RESISTENCIA', 'awdawdaw', 'wadfawdawd', 'Tarde', 23, '2345242423', 'wadawfawfaw@gmail.com', '2024-10-24', 'Tarde 1', 220000200, 'ACTIVADO'),
+	(42, 'U.E.G.P. Nº 1 (UEP 1) INSTITUTO EDUCATIVO PRIVADO', 'RESISTENCIA', 'awdawdawd', 'wadawdaw', 'Mañana', 23, '234234242', 'waefwaefwaef@gmail.com', '2024-10-30', 'Tarde 1', 220000400, 'ACTIVADO'),
+	(43, 'E.P.A Nº 14 - RAMON DE LAS MERCEDES TISSERA', 'RESISTENCIA', 'awefawef', 'waefwaef', 'Mañana', 22, '2342342342', 'aewfawefwaf@gmail.com', '2024-10-29', 'Mañana 2', 220000505, 'ACTIVADO');
 
 -- Volcando estructura para tabla conectarlab.inscripciones_comunidad
 CREATE TABLE IF NOT EXISTS `inscripciones_comunidad` (
@@ -3153,7 +3165,9 @@ CREATE TABLE IF NOT EXISTS `talleres_comunidad` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla conectarlab.talleres_comunidad: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conectarlab.talleres_comunidad: ~2 rows (aproximadamente)
+INSERT INTO `talleres_comunidad` (`id`, `titulo`, `imagen`, `fecha`, `descripcion`) VALUES
+	(1, 'hola jaja', 'NULL', '2024-10-27', 'NULL');
 
 -- Volcando estructura para tabla conectarlab.talleres_docentes
 CREATE TABLE IF NOT EXISTS `talleres_docentes` (
@@ -3166,6 +3180,20 @@ CREATE TABLE IF NOT EXISTS `talleres_docentes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Volcando datos para la tabla conectarlab.talleres_docentes: ~0 rows (aproximadamente)
+INSERT INTO `talleres_docentes` (`id`, `titulo`, `imagen`, `fecha`, `descripcion`) VALUES
+	(1, 'awdawd', 'awfawf', '2024-10-09', 'awfawfawf');
+
+-- Volcando estructura para tabla conectarlab.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(2) NOT NULL,
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `password` varchar(255) NOT NULL DEFAULT '',
+  `rol` enum('admin','user') NOT NULL DEFAULT 'admin',
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Volcando datos para la tabla conectarlab.users: ~0 rows (aproximadamente)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
