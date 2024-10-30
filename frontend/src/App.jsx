@@ -25,7 +25,7 @@ function App() {
 
   async function hayTalleres() {
     try {
-      const comunidadResponse = await axios.get('http://localhost:3000/comunidad_data');
+      const comunidadResponse = await axios.get('http://localhost:3000/api/alumnos');
       setComunidadData(comunidadResponse.data);
     } catch (error) {
       console.error('Error fetching comunidad data:', error);
@@ -33,7 +33,7 @@ function App() {
     }
 
     try {
-      const docenteResponse = await axios.get('http://localhost:3000/docente_data');
+      const docenteResponse = await axios.get('http://localhost:3000/api/docentes');
       setDocenteData(docenteResponse.data);
     } catch (error) {
       console.error('Error fetching docente data:', error);
@@ -208,7 +208,7 @@ function App() {
 );
 
 //Pie de Pagina EducarLab, Comienza desde Donde Visitarnos?
-);
+
 }
 
 export default App;

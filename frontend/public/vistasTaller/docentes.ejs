@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar Taller Docentes</title>
+</head>
+<body>
+    <h1>Cargar Taller Docente</h1>
+    <form action="/docente/confirmacion" method="POST">
+        <div>
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+        </div>
+        <div>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="2" required></textarea>
+        </div>
+        <div>
+            <label for="driveLink">Enlace de Google Drive (para la imagen):</label>
+            <input type="text" id="driveLink" name="driveLink">
+        </div>
+        <button type="submit">Cargar</button>
+    </form>
+    <br>
+    <h1>Talleres de Docentes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Fecha Agregado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% entradas.forEach((entrada) => { %>
+                <tr>
+                    <td><%= entrada.id %></td>
+                    <td><%= entrada.titulo %></td>
+                    <td><%= entrada.descripcion %></td>
+                    <td>
+                        <% if (entrada.imagen) { %>
+                            <img src="<%= entrada.imagen %>" alt="<%= entrada.titulo %>" width="100">
+                        <% } %>
+                    </td>
+                    <td><%= entrada.fecha %></td>
+                    <td>
+                        <a href="/docente/delete/<%= entrada.id %>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta entrada?');">Eliminar</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <a href="/">Volver Al Inicio</a>
+    <a href="/ConectarLab.html">Página Principal</a>
+</body>
+</html>
