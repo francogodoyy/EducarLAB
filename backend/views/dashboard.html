@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Bienvenido al Dashboard</h2>
+        <p>Aquí puedes gestionar tus opciones.</p>
+        <button id="logoutButton">Cerrar sesión</button>
+    </div>
+
+    <script>
+        // Verificar el token
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('authToken');
+
+            if (!token) {
+                // Si no hay token, redirigir a la página de inicio de sesión
+                window.location.href = 'login.html'; // Asegúrate de que esta ruta sea correcta
+            }
+
+            // Opcional: Verifica el token en el servidor
+            // fetch('http://localhost:3000/verifyToken', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Authorization': `Bearer ${token}`
+            //     }
+            // }).then(response => {
+            //     if (!response.ok) {
+            //         // Redirigir si el token no es válido
+            //         window.location.href = 'login.html';
+            //     }
+            // });
+
+            // Manejo del botón de cierre de sesión
+            document.getElementById('logoutButton').addEventListener('click', function() {
+                localStorage.removeItem('authToken'); // Eliminar el token del localStorage
+                window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+            });
+        });
+    </script>
+</body>
+</html>

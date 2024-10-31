@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Comentarios</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Asegúrate de que la ruta sea correcta -->
+    <!-- Otras inclusiones de CSS y JS -->
+</head>
+<body>
+    <h1>Administrar Comentarios</h1>
+
+    <!-- Formulario para cargar un comentario -->
+    <section id="cargar-comentario">
+        <h3>Cargar Comentario</h3>
+        <form id="comentarioForm">
+            <input type="text" id="nombre" placeholder="Apellido y Nombre" required />
+            <textarea id="mensaje" placeholder="Mensaje/Comentario..." required></textarea>
+            <button type="submit">Cargar</button>
+            <button type="button" id="borrarTodo">Borrar Todo</button>
+        </form>
+    </section>
+
+    <!-- Tabla de comentarios -->
+    <section id="comentarios-table">
+        <h3>Comentarios Cargados</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Apellido y Nombre</th>
+                    <th>Comentario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="comentariosTabla">
+                <!-- Aquí se generarán las filas de los comentarios -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="src/assets/js/adminComentarios.js"></script> <!-- Asegúrate de que la ruta sea correcta -->
+</body>
+</html>

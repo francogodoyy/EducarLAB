@@ -5,9 +5,9 @@ let DB = null
 try {
    DB = await mysql.createConnection({
       host: 'localhost',
-      user: 'root',
-      password: 'lucas24',
-      database: 'conectarlab',
+      user: 'Alan',
+      password: 'baiker11',
+      database: 'bdeducar',
     });
 } catch (err) {
     console.log(err);
