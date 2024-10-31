@@ -7,13 +7,27 @@ import moment from 'moment'; // Para formato de fechas
 import { Escuela, Horarios, PostTurno, getHorariosOcupados, getFechasOcupadas, getCue } from './apis/formEscuelas.js';
 import { PostTurnoComunidad, getComunidadData } from './apis/formComunidad.js';
 import {  PostTurnoDocente, getDocenteData } from './apis/formDocente.js';
+import users, { verifyToken, verifyAdmin } from '../Routes/Users.js';
 import DB from './db/conexion.js';
+
 
 // Configuración de la aplicación Express
 const app = express()
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Configuración de la aplicación Express
 app.use(express.json());
 app.use(express.urlencoded({extended: true, }));
 app.use(cors())
+
+
+app.use(express.static(path.join(__dirname, '..', 'views')));
+
+
+//Router de usuarios
+app.use('/users', users);
+
 
 // Ruta raíz
 app.get('/', (req, res) => {
@@ -29,6 +43,28 @@ app.get('/get', (req, res) => {
 app.get('/get_horarios', (req, res) => {
   res.json(Horarios);
 })
+
+// Ruta para la página de restablecimiento de contraseña
+app.get('/resetPassword', (req, res) => {
+  res.sendFile(path.join(__dirname,'..', 'views', 'resetPassword.html'));
+});
+
+// Ruta para la página de login
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'views', 'login.html'));
+});
+
+// Ruta para la página de login
+app.get('/createAdmin', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'views', 'register.html'));
+});
+
+app.get('/sendResetPasswordEmail', (req, res) => {
+  res.sendFile(path.join(__dirname,'..', 'views', 'requestPasswordReset.html'));
+});
+
+
+
 
 // Ruta para insertar turno de escuela
 app.post('/post', (req, res) => {
@@ -122,9 +158,6 @@ app.get('/api/cue', async (req, res) => {
 
 //Parte de Paniagua (Tema Carga de Talleres(Alumnos y Docentes) y Carrusel Principal )
 
-// Importar dirname desde path
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Configurar EJS como motor de plantillas
 app.set('view engine', 'ejs');
