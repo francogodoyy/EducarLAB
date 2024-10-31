@@ -130,7 +130,7 @@ const __dirname = path.dirname(__filename);
 app.set('view engine', 'ejs');
 
 // Ajustar la ruta de las vistas
-app.set('views', path.join(__dirname, '../../frontend/public/vistasTaller'));
+app.set('views', path.join(__dirname, '../views'));
 
 // Habilitar CORS para todas las rutas
 app.use(cors());
@@ -148,7 +148,7 @@ app.get('/conectarlab', (req, res) => {
 
 // Ruta para el formulario de subida de entradas
 app.get('/admin', (req, res) => {
-  res.render('Principal');
+  res.render('principalAdmin');
 });
 
 // Rutas para talleres_comunidad (Alumnos)
@@ -158,7 +158,7 @@ app.get('/alumnos', async (req, res) => {
     results.forEach(entry => {
       entry.fecha = moment(entry.fecha).format('YYYY-MM-DD');
     });
-    res.render('alumnos', { entradas: results, message: null, error: null });
+    res.render('cargaTalleralumnos', { entradas: results, message: null, error: null });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: err.message });
@@ -179,14 +179,14 @@ app.post('/alumnos/confirmacion', async (req, res) => {
     results.forEach(entry => {
       entry.fecha = moment(entry.fecha).format('YYYY-MM-DD');
     });
-    res.render('alumnos', { 
+    res.render('cargaTalleralumnos', { 
       entradas: results, 
       message: 'Entrada añadida exitosamente.',
       error: null
     });
   } catch (err) {
     console.error('Error al insertar:', err);
-    res.render('alumnos', { 
+    res.render('cargaTalleralumnos', { 
       entradas: [], 
       error: 'Error al insertar la entrada. Por favor, intenta nuevamente.',
       message: null
@@ -214,7 +214,7 @@ app.get('/docentes', async (req, res) => {
     results.forEach(entry => {
       entry.fecha = moment(entry.fecha).format('YYYY-MM-DD');
     });
-    res.render('docentes', { entradas: results, message: null, error: null });
+    res.render('cargaTallerdocentes', { entradas: results, message: null, error: null });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: err.message });
@@ -235,14 +235,14 @@ app.post('/docente/confirmacion', async (req, res) => {
     results.forEach(entry => {
       entry.fecha = moment(entry.fecha).format('YYYY-MM-DD');
     });
-    res.render('docentes', { 
+    res.render('cargaTallerdocentes', { 
       entradas: results, 
       message: 'Entrada añadida exitosamente.',
       error: null
     });
   } catch (err) {
     console.error('Error al insertar:', err);
-    res.render('docentes', { 
+    res.render('cargaTallerdocentes', { 
       entradas: [], 
       error: 'Error al insertar la entrada. Por favor, intenta nuevamente.',
       message: null

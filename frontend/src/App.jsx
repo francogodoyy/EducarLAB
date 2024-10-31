@@ -24,7 +24,7 @@ function App() {
 
   async function hayTalleres() {
     try {
-      const comunidadResponse = await axios.get('http://localhost:3000/api/alumnos');
+      const comunidadResponse = await axios.get('http://localhost:3000/comunidad_data');
       setComunidadData(comunidadResponse.data);
     } catch (error) {
       console.error('Error fetching comunidad data:', error);
@@ -32,7 +32,7 @@ function App() {
     }
 
     try {
-      const docenteResponse = await axios.get('http://localhost:3000/api/docentes');
+      const docenteResponse = await axios.get('http://localhost:3000/docente_data');
       setDocenteData(docenteResponse.data);
     } catch (error) {
       console.error('Error fetching docente data:', error);
