@@ -338,5 +338,111 @@ function convertToLh3Format(driveLink) {
   return null;
 }
 
+//FACUNDO VALLEJOS
+// Ruta para obtener datos de comunidad
+app.get('/comunidad_data', async (req, res) => {
+  try {
+      const data = await getComunidadData();
+      res.json(data);
+  } catch (error) {
+      console.error('Error fetching comunidad data:', error);
+      res.status(500).json({ error: "Error fetching comunidad data" });
+  }
+});
+
+// Ruta para obtener datos de docente
+app.get('/docente_data', async (req, res) => {
+  try {
+      const data = await getDocenteData();
+      res.json(data);
+  } catch (error) {
+      console.error('Error fetching docente data:', error);
+      res.status(500).json({ error: "Error fetching docente data" });
+  }
+});
+
+app.get('/escuelas', async (req, res) => {
+  try {
+      const [rows] = await DB.execute('SELECT * FROM escuelas'); // Consulta para obtener todas las escuelas
+      console.log('Resultados de la consulta:', rows);
+
+      if (rows.length > 0) {
+          res.json(rows);
+      } else {
+          res.status(404).json({ message: 'No se encontraron escuelas' });
+      }
+  } catch (error) {
+      console.error('Error al consultar la base de datos:', error);
+      res.status(500).json({ message: 'Error interno del servidor' });
+  }
+});
+
+// Ruta para obtener todas las escuelas
+app.get('/cue/:id_cue', async (req, res) => {
+  try {
+      const [rows] = await DB.execute('SELECT * FROM bdcue'); // Consulta para obtener todas las escuelas
+      console.log('Resultados de la consulta:', rows);
+
+      if (rows.length > 0) {
+          res.json(rows);
+      } else {
+          res.status(404).json({ message: 'No se encontraron escuelas' });
+      }
+  } catch (error) {
+      console.error('Error al consultar la base de datos:', error);
+      res.status(500).json({ message: 'Error interno del servidor' });
+  }
+});
+
+// Ruta para cancelar el turno
+app.put('/cancelar_turno/:nombre_escuela', async (req, res) => {
+  const { nombre_escuela } = req.params;
+  try {
+      const [result] = await DB.execute('UPDATE escuelas SET estado = ? WHERE nombre_escuela = ?', ['cancelado', nombre_escuela]);
+      if (result.affectedRows > 0) {
+          res.status(200).send('Turno cancelado con éxito');
+      } else {
+          res.status(404).send('No se encontró la escuela');
+      }
+  } catch (error) {
+      console.error('Error al cancelar el turno:', error);
+      res.status(500).send('Error al cancelar el turno');
+  }
+});
+
+//consultar inscripciones comunidad
+app.get('/inscripciones_comunidad', async (req, res) => {
+  try {
+      const [rows] = await DB.execute('SELECT * FROM inscripciones_comunidad'); // Consulta para obtener todas las comunidades
+      console.log('Resultados de la consulta:', rows);
+
+      if (rows.length > 0) {
+          res.json(rows);
+      } else {
+          res.status(404).json({ message: 'No se encontraron escuelas' });
+      }
+  } catch (error) {
+      console.error('Error al consultar la base de datos:', error);
+      res.status(500).json({ message: 'Error interno del servidor' });
+  }
+});
+
+//consultar inscripciones docentes
+app.get('/inscripciones_docente', async (req, res) => {
+  try {
+      const [rows] = await DB.execute('SELECT * FROM inscripciones_docente'); // Consulta para obtener todas los docentes
+      console.log('Resultados de la consulta:', rows);
+
+      if (rows.length > 0) {
+          res.json(rows);
+      } else {
+          res.status(404).json({ message: 'No se encontraron escuelas' });
+      }
+  } catch (error) {
+      console.error('Error al consultar la base de datos:', error);
+      res.status(500).json({ message: 'Error interno del servidor' });
+  }
+});
+
 // Iniciar el servidor en el puerto 3000
 app.listen(3000)

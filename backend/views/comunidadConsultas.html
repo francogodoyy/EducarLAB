@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Inscripciones Comunidad</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: auto;
+            display: block;
+            max-height: 400px; /* Ajusta la altura según sea necesario */
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .selected {
+            background-color: #d9edf7;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Inscripciones Comunidad</h1>
+        <input type="text" id="searchInput" placeholder="Buscar por nombre de alumno" oninput="filterAlumnos()">
+
+        <table border="1" id="resultTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre Alumno</th>
+                    <th>Edad</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Nombre Tutor</th>
+                    <th>Teléfono Tutor</th>
+                    <th>Email</th>
+                    <th>Título Taller</th>
+                    <th>Fecha Taller</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div class="buttons">
+            <button id="escuelas" onclick="window.location.href='escuelasConsultas.html'">Volver</button>
+            <button id="inscripcionesDocentes" onclick="window.location.href='docentesConsultas.html'">Inscripciones Docentes</button>
+        </div>
+    </div>
+
+    <script>
+        const resultTable = document.getElementById('resultTable').getElementsByTagName('tbody')[0];
+        let alumnos = [];
+
+        async function loadAllAlumnos() {
+            try {
+                const response = await fetch('http://localhost:3000/inscripciones_comunidad');
+                if (!response.ok) {
+                    throw new Error('No se encontraron resultados');
+                }
+                alumnos = await response.json();
+                updateTable(alumnos);
+            } catch (error) {
+                console.error('Error al buscar los datos:', error);
+                const errorMessage = document.createElement('p');
+                errorMessage.textContent = error.message;
+                document.body.appendChild(errorMessage);
+            }
+        }
+
+        function updateTable(data) {
+            resultTable.innerHTML = '';
+            data.forEach(alumno => {
+                const row = document.createElement('tr');
+                const columns = ['id', 'nombre_alumno', 'edad', 'fecha_nacimiento', 'nombre_tutor', 'telefono_tutor', 'email', 'taller_titulo', 'taller_fecha', 'estado'];
+                columns.forEach(column => {
+                    const cell = document.createElement('td');
+                    cell.textContent = alumno[column] || '';
+                    row.appendChild(cell);
+                });
+                resultTable.appendChild(row);
+            });
+        }
+
+        function filterAlumnos() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const filteredAlumnos = alumnos.filter(alumno =>
+                alumno.nombre_alumno.toLowerCase().includes(searchInput)
+            );
+            updateTable(filteredAlumnos);
+        }
+
+        window.onload = loadAllAlumnos;
+    </script>
+</body>
+</html>
